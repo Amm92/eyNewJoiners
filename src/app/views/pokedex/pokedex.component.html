@@ -1,0 +1,15 @@
+<div class="cards-container">
+    @for (pokemon of pokemons; track pokemon) {
+        <ey-pokemon-card [pokemon]="pokemon"></ey-pokemon-card>
+    }
+</div>
+<mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               [length]="pokemons[0].total || 0"
+               [pageSize]="20"
+               [showFirstLastButtons]="true"
+               [hidePageSize]="false"
+               [pageIndex]="pageIndex"
+               aria-label="Select page">
+</mat-paginator>
