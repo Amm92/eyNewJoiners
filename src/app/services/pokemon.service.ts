@@ -34,7 +34,20 @@ export class PokemonService {
     );
   }
 
-  public getPokemon(number:string): Observable<any>{
-    return this._http.get(`${this._apiurl}pokemon/${number}`);
+  public getPokemon(number:number): Observable<any>{
+    return this._http.get(`${this._apiurl}pokemon/${number}`).pipe(
+      map(
+        (resp:any) =>{
+          const pokemon = {
+            name: resp.name,
+            types: resp.types.map((type:any)=> type.type.name),
+            ability: resp.abilities[0].ability.name,
+            number: resp.id,
+            moves: resp.moves.slice(0, 4).map((move:any) => move.move.name)
+          }
+          return pokemon;
+        }
+      )
+    );
   }
 }
