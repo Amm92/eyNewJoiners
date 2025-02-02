@@ -1,0 +1,19 @@
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem; 
+    padding: 1rem; 
+  }
+  
+  ey-pokemon-card {
+    width: 20%;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out; 
+  }
+  
+  ey-pokemon-card:hover {
+    transform: scale(1.05); 
+    cursor: pointer;
+  }
+  
