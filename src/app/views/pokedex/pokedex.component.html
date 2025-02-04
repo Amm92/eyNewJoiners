@@ -9,7 +9,7 @@
 
 <div class="cards-container">
     @for (pokemon of pokemons; track pokemon) {
-        <ey-pokemon-card [pokemon]="pokemon" (onClick)="sayHello($event)"></ey-pokemon-card>
+        <ey-pokemon-card [pokemon]="pokemon"></ey-pokemon-card>
     }
 </div>
 <mat-paginator #paginator

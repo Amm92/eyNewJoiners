@@ -45,7 +45,4 @@ export class PokedexComponent implements OnInit, OnDestroy{
     this.getPokemons();
   }
 
-  sayHello(event:string){
-    this.message = event;
-  }
 }
