@@ -1,6 +1,15 @@
+
+<div class="img-title">
+    
+    <img src="pokemon.png" alt="">
+
+    <h2>{{message}}</h2>
+
+</div>
+
 <div class="cards-container">
     @for (pokemon of pokemons; track pokemon) {
-        <ey-pokemon-card [pokemon]="pokemon"></ey-pokemon-card>
+        <ey-pokemon-card [pokemon]="pokemon" (onClick)="sayHello($event)"></ey-pokemon-card>
     }
 </div>
 <mat-paginator #paginator

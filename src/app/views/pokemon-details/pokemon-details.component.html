@@ -1,36 +1,40 @@
 <div class="main-container">
-    <div class="img-container">
-        <img [src]="pokemonImage()">
+    <div class="card-container">
+        <div class="img-container">
+            <img [src]="pokemonImage()">
+        </div>
+        <div class="data-container">
+            <span>
+                <strong [eyTypeColor]="pokemonData().types[0]">Name:</strong> {{pokemonData().name | capitalize}}
+            </span>
+            <span>
+                <strong [eyTypeColor]="pokemonData().types[0]">Types:</strong> 
+                <ul>
+                    @for (type of pokemonData().types; track type) {    
+                        <li>{{type | capitalize}}</li>
+                     }
+                </ul>
+               
+            </span>
+            <span>
+                <strong [eyTypeColor]="pokemonData().types[0]">Ability:</strong> {{pokemonData().ability | capitalize}}
+            </span>
+            <span>
+                <strong [eyTypeColor]="pokemonData().types[0]">Number:</strong>  {{pokemonData().number}}
+            </span>
+            <span>
+                <strong [eyTypeColor]="pokemonData().types[0]">Moves:</strong> 
+                <ul>
+                    @for (move of pokemonData().moves; track move) {    
+                        <li>{{move | capitalize}}</li>
+                     }
+                </ul>
+            </span>
+        </div>
+    
     </div>
-    <div class="data-container">
-        <span>
-            <strong>Nombre:</strong> {{pokemonData().name | capitalize}}
-        </span>
-        <span>
-            <strong>Tipos:</strong> 
-            <ul>
-                @for (type of pokemonData().types; track type) {    
-                    <li>{{type | capitalize}}</li>
-                 }
-            </ul>
-           
-        </span>
-        <span>
-            <strong>Habilidad:</strong> {{pokemonData().ability | capitalize}}
-        </span>
-        <span>
-            <strong>Número:</strong>  {{pokemonData().number}}
-        </span>
-        <span>
-            <strong>Movimientos:</strong> 
-            <ul>
-                @for (move of pokemonData().moves; track move) {    
-                    <li>{{move | capitalize}}</li>
-                 }
-            </ul>
-        </span>
+    <div style="width: 70%; margin-top:1em">
+        <button mat-raised-button [routerLink]="['/pokedex']">Volver a la pokedex</button>
     </div>
-
+    
 </div>
-
-<button mat-button [routerLink]="['/pokedex']">Volver a la pokedex</button>

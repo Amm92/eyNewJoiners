@@ -1,11 +1,11 @@
-import { Directive, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[eyTypeColor]',
 })
-export class TypeColorDirective implements OnChanges{
+export class TypeColorDirective implements OnInit{
 
-  @Input('type') type!: string;
+  @Input('eyTypeColor') type: string = 'fire';
 
   private colors: { [key: string]: string } = {
     fire: 'red',
@@ -20,17 +20,17 @@ export class TypeColorDirective implements OnChanges{
     flying: 'skyblue'
   };
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['type']) {
-      this.cambiarColorTexto();
-    }
+  constructor(private el: ElementRef) {
+  }
+  ngOnInit(): void {
+    this.updateColor();
   }
 
-  private cambiarColorTexto(): void {
+
+  private updateColor(): void {
     const color = this.colors[this.type.toLowerCase()] || 'black';
-    this.renderer.setStyle(this.el.nativeElement, 'color', color);
+    console.log(color);
+    this.el.nativeElement.style.color = color;
   }
 
 }

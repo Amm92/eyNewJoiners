@@ -5,10 +5,11 @@ import { Subscription } from 'rxjs';
 import { CapitalizePipe } from "../../pipes/capitalize.pipe";
 import { MatButtonModule } from '@angular/material/button';
 import { TypeColorDirective } from '../../directives/type-color.directive';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ey-pokemon-details',
-  imports: [CapitalizePipe, MatButtonModule, RouterModule, TypeColorDirective],
+  imports: [CommonModule, CapitalizePipe, MatButtonModule, RouterModule, TypeColorDirective],
   templateUrl: './pokemon-details.component.html',
   styleUrl: './pokemon-details.component.scss'
 })
@@ -18,7 +19,7 @@ export class PokemonDetailsComponent implements OnInit, OnDestroy{
   public pokemonData = signal<any>(null);
   private _subscriptions: Subscription[] = [];
   public readonly pokemonImage = computed (
-      () => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.pokemonData().number}.png`
+      () => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.pokemonID}.png`
     )
 
   constructor(private _pokemonService: PokemonService, private _activatedRoute: ActivatedRoute){

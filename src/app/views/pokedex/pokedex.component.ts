@@ -15,6 +15,7 @@ export class PokedexComponent implements OnInit, OnDestroy{
   public pokemons: any[] = [];
   private _subscription!: Subscription;
   pageIndex = 0;
+  message!: string;
 
   constructor(private _pokemonService: PokemonService){
 
@@ -42,5 +43,9 @@ export class PokedexComponent implements OnInit, OnDestroy{
     this._subscription.unsubscribe();
     this.pageIndex = e.pageIndex;
     this.getPokemons();
+  }
+
+  sayHello(event:string){
+    this.message = event;
   }
 }
